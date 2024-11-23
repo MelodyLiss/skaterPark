@@ -15,12 +15,12 @@ class Server {
         this.app.set('view engine','hbs');
         this.app.use(express.json());
         hbs.registerPartials(path.join(__dirname,'../views/partials'));
-        this.app.use(express.urlencoded({extended:true}));
         this.app.use(express.static('public'));
+        this.app.use(express.urlencoded({extended:true}));
     }
 
     routers(){
-
+        this.app.use('/',require('../routers/home.js'))
     }
 
     listen() {

@@ -1,0 +1,23 @@
+.navbar{
+    background-color:$primary_color_dark;
+
+    .nav-link{
+        padding: 1rem !important;
+    }
+
+    .navbar-brand{
+        width: 15%;
+        img{
+        width: 100%;
+        }
+    }
+}
+
+footer{
+    background-color: $primary_color_dark;
+    p{
+        text-align: center;
+        font-size: 0.6rem;
+        color:aliceblue;
+    }
+}

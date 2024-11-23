@@ -1,0 +1,117 @@
+
+/* HOME */
+header {
+    display: flex;
+    width: 70%;
+    margin: auto;
+    padding: 3rem;
+    
+    h1{
+        text-transform: uppercase;
+    }
+    img{
+        width: 50%;
+    }
+
+    .img-header {
+        position:relative;
+        filter: drop-shadow(
+            0 0 10px rgba(13, 14, 13, 0.8)
+        );
+        .img-chica{
+            position:absolute;
+            left: 13rem;
+            top: 8rem;
+        }
+    }
+
+    .informacion-header{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    button{
+        background-color: $secondary_color_dark;
+        padding: 1rem;
+        border-radius: 10px;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: aliceblue;
+        width: 50%;
+        margin-bottom: 1rem;
+    }
+
+    a{
+        color: $secondary_color_light;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+}
+.resumen-torneo{
+    background-color:$primary_color_light;
+    padding:2rem;
+    padding-bottom: 6rem;
+    font-size: 2rem;
+
+    h2{
+        text-transform: uppercase;
+        color: $secondary_color_light;
+        text-align: center;
+        font-weight: 900;
+        font-size: 4rem;
+        filter: drop-shadow(
+            0 0 10px rgba(15, 15, 15, 0.8)
+        );
+        padding: 2rem;
+    }
+    img{
+        margin: 2rem;
+        width: 40%;
+        height: 40%;
+        transform: rotate(-5deg);
+        border: 0.8rem solid silver;
+        border-radius: 5px;
+        filter: drop-shadow(
+            0 0 10px rgba(13, 14, 13, 0.8)
+        );
+    }
+
+    .informacion{
+        padding: 2rem;
+        p{
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        li{
+            font-size: 1.2rem;
+        }
+    }
+}
+.organizacion{
+    p{
+        margin: 1rem;
+        color: aliceblue;
+    }
+    img{
+        width: 3rem;
+        margin: 0.3rem;
+    }
+
+    .logo-marcas{
+        img{
+        width: 5rem;
+        };
+    }
+
+    a{
+        font-size: 2rem;
+        margin: 0.3rem;
+        color:$secondary_color_light;
+        &:hover{
+            color:$secondary_color_dark;
+        }
+    }
+    
+}

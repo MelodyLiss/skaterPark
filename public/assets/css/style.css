@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+html {
+  box-sizing: border-box;
+  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.2rem;
+  font-size: 0.8rem;
+  color: #282733;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #282733;
+}
+
+button {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* HOME */
+header {
+  display: flex;
+  width: 70%;
+  margin: auto;
+  padding: 3rem;
+}
+header h1 {
+  text-transform: uppercase;
+}
+header img {
+  width: 50%;
+}
+header .img-header {
+  position: relative;
+  filter: drop-shadow(0 0 10px rgba(13, 14, 13, 0.8));
+}
+header .img-header .img-chica {
+  position: absolute;
+  left: 13rem;
+  top: 8rem;
+}
+header .informacion-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+header button {
+  background-color: #c84f38;
+  padding: 1rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: aliceblue;
+  width: 50%;
+  margin-bottom: 1rem;
+}
+header a {
+  color: #db8d2b;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.resumen-torneo {
+  background-color: #1a6988;
+  padding: 2rem;
+  padding-bottom: 6rem;
+  font-size: 2rem;
+}
+.resumen-torneo h2 {
+  text-transform: uppercase;
+  color: #db8d2b;
+  text-align: center;
+  font-weight: 900;
+  font-size: 4rem;
+  filter: drop-shadow(0 0 10px rgba(15, 15, 15, 0.8));
+  padding: 2rem;
+}
+.resumen-torneo img {
+  margin: 2rem;
+  width: 40%;
+  height: 40%;
+  transform: rotate(-5deg);
+  border: 0.8rem solid silver;
+  border-radius: 5px;
+  filter: drop-shadow(0 0 10px rgba(13, 14, 13, 0.8));
+}
+.resumen-torneo .informacion {
+  padding: 2rem;
+}
+.resumen-torneo .informacion p {
+  font-size: 1rem;
+  font-weight: 400;
+}
+.resumen-torneo .informacion li {
+  font-size: 1.2rem;
+}
+
+.organizacion p {
+  margin: 1rem;
+  color: aliceblue;
+}
+.organizacion img {
+  width: 3rem;
+  margin: 0.3rem;
+}
+.organizacion .logo-marcas img {
+  width: 5rem;
+}
+.organizacion a {
+  font-size: 2rem;
+  margin: 0.3rem;
+  color: #db8d2b;
+}
+.organizacion a:hover {
+  color: #c84f38;
+}
+
+.navbar {
+  background-color: #141b1d;
+}
+.navbar .nav-link {
+  padding: 1rem !important;
+}
+.navbar .navbar-brand {
+  width: 15%;
+}
+.navbar .navbar-brand img {
+  width: 100%;
+}
+
+footer {
+  background-color: #141b1d;
+}
+footer p {
+  text-align: center;
+  font-size: 0.6rem;
+  color: aliceblue;
+}/*# sourceMappingURL=style.css.map */
