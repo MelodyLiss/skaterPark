@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>head}}
+
+<body>
+
+    {{>navbar}}
+
+    <main>
+        <div class="py-4">
+            <h1>Administración</h1>
+
+            {{#if skaters.length}}
+            <table class="table w-50 m-auto">
+                <thead>
+                    <tr >
+                        <th scope="col">#</th>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Años de experiencia</th>
+                        <th scope="col">Especialidad</th>
+                        <th scope="col">Estado</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    {{#each skaters}}
+                    <tr>
+                        <th scope="row">{{this.id}}</th>
+                        <td>
+                            <div>{{this.foto}}</div> {{!-- arreglar despues --}}
+                        </td>
+                        <td>{{this.nombre}}</td>
+                        <td class="text-center">{{this.anos_experiencia}}</td>
+                        <td>{{this.especialidad}}</td>
+                        <td><input type="checkbox" {{#if estado}}checked{{/if}} data-id="{{id}}" /></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+                
+            </table>
+            {{/if}}
+        </div>
+    </main>
+
+    {{>footer}}
+    {{>script}}
+</body>
+
+</html>

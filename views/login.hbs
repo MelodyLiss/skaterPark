@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>head}}
+
+<body>
+    {{>navbar}}
+
+
+    <main class="login d-flex justify-content-center align-items-center">
+        <form class="form-container loginForm" method="POST" action="/skaterpark/auth/login">
+            <fieldset>
+                <legend class="text-center">Inicia sesión</legend>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Ingresa tu correo</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="email"
+                        aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3 position-relative">
+                    <label for="inputPassword" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="inputPassword" name="password" required>
+                    <i class="fas fa-eye position-absolute" id="togglePassword"
+                        style="top: 78%; right: 10px; transform: translateY(-30%); cursor: pointer;"></i>
+                </div>
+                <div class="d-flex justify-content-around">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Recordar sesión</label>
+                    </div>
+                    <a href="#">¿Olvidaste tu Contraseña?</a>
+                </div>
+
+                <button type="submit" class="btn">Entrar</button>
+
+                <!-- Mensaje de error dinámico -->
+                {{#if mensajeError}}
+                <div id="mensajeError" class="form-text text-danger">
+                    {{mensajeError}}
+                </div>
+                {{/if}}
+
+                <p>¿Aún no tienes cuenta? <a href="/skaterpark/register">Regístrate</a></p>
+            </fieldset>
+        </form>
+    </main>
+
+
+    {{>footer}}
+    {{>script}}
+</body>
+
+</html>

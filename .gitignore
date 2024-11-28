@@ -1,2 +1,5 @@
 /node_modules
 .vscode
+test.js
+querys.sql
+*.scss

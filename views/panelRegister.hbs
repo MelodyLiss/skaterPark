@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>head}}
+
+<body>
+    {{>navbar}}
+
+
+<main class="login d-flex justify-content-center align-items-center">
+    <form class="form-container" method="POST" action="/skaterpark/skaters/register" enctype="multipart/form-data">
+        <fieldset>
+            <legend class="text-center">Regístrate en Skater Park 2024</legend>
+
+            <!-- Nombre -->
+            <div class="mb-3">
+                <label for="inputName" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="inputName" name="nombre" required>
+                <div id="nameError" class="form-text text-danger"></div>
+            </div>
+
+            <!-- Correo -->
+            <div class="mb-3">
+                <label for="inputEmail" class="form-label">Correo</label>
+                <input type="email" class="form-control" id="inputEmail" name="email" required>
+                <div id="emailError" class="form-text text-danger"></div>
+            </div>
+
+            <!-- Contraseña -->
+            <div class="mb-3 position-relative">
+                <label for="inputPassword" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="inputPassword" name="password" required>
+                <i class="fas fa-eye position-absolute" id="togglePassword" style="top: 78%; right: 10px; transform: translateY(-30%); cursor: pointer;"></i>
+            </div>
+
+            <!-- Repetir Contraseña -->
+            <div class="mb-3 position-relative">
+                <label for="inputConfirmPassword" class="form-label">Repetir Contraseña</label>
+                <input type="password" class="form-control" id="inputConfirmPassword" name="confirmPassword" required>
+                <i class="fas fa-eye position-absolute" id="toggleConfirmPassword" style="top: 78%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
+            </div>
+
+            <!-- Experiencia -->
+            <div class="mb-3">
+                <label for="inputExperience" class="form-label">Años de experiencia</label>
+                <input type="number" class="form-control" id="inputExperience" name="anos_experiencia" min="0">
+            </div>
+
+            <!-- Especialidad -->
+            <div class="mb-3">
+                <label for="inputSpecialty" class="form-label">Especialidad</label>
+                <select class="form-select" id="inputSpecialty" name="especialidad" required>
+                    <option value="" selected>Selecciona tu estilo</option>
+                    <option value="freestyle">Freestyle</option>
+                    <option value="street">Street</option>
+                    <option value="vert">Vert</option>
+                    <option value="park">Park</option>
+                    <option value="bowl">Bowl</option>
+                    <option value="downhill">Downhill</option>
+                    <option value="cruising">Cruising</option>
+                    <option value="longboard">Longboard</option>
+                    <option value="slalom">Slalom</option>
+                    <option value="freeride">Freeride</option>
+                </select>
+            </div>
+
+            <!-- Fotografía -->
+            <div class="mb-3">
+                <label for="formFileLg" class="form-label">Fotografía</label>
+                <input class="form-control" id="formFileLg" type="file" name="foto" accept="image/*" required>
+            </div>
+
+            <!-- Botón de registro -->
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-success">Registrarse</button>
+            </div>
+
+            <!-- Bases del torneo -->
+            <p class="text-center">Conoce las <a href="/skaterpark/bases">bases aquí</a></p>
+        </fieldset>
+    </form>
+</main>
+
+
+    {{>footer}}
+    {{>script}}
+</body>
+
+</html>

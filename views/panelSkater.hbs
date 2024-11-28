@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>head}}
+
+<body>
+    {{>navbar}}
+
+    <main>
+        <div class="skater container p-5 d-flex">
+            <div class="foto-perfil">
+                <img src="/{{skater.foto}}" alt="imagen de perfil de {{skater.nombre}}">
+            </div>
+
+            <div class="datos-skater">
+                <h3>{{skater.nombre}}</h3>
+                <h4>{{skater.email}}</h4>
+
+                <ul>
+                    <li>Años de experiencia: <span>{{skater.anos_experiencia}}</span></li>
+                    <li>Especialidad: <span>{{skater.especialidad}}</span></li>
+                </ul>
+
+                <div class="d-flex solicitud">
+                    <p>Estado de solicitud:</p>
+                    <p id="estado">
+                        {{#if skater.estado}}
+                        Aprobado
+                        {{else}}
+                        Pendiente
+                        {{/if}}
+                    </p>
+                </div>
+
+                <div>
+                    <button class="btn-actualizar">ACTUALIZAR DATOS</button>
+                    <button class="btn-eliminar">ELIMINAR CUENTA</button>
+                </div>
+                <button onclick="logout()">Cerrar sesión</button>
+                {{!-- <a href="/logout">  </a> --}}
+        </div>
+    </main>
+
+    {{>footer}}
+    {{>script}}
+</body>
+
+</html>

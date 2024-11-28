@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const path = require('path');
+const expressFileUpload = require('express-fileupload');
 require('dotenv').config()
 
 class Server {
@@ -15,12 +16,19 @@ class Server {
         this.app.set('view engine','hbs');
         this.app.use(express.json());
         hbs.registerPartials(path.join(__dirname,'../views/partials'));
-        this.app.use(express.urlencoded({extended:true}));
         this.app.use(express.static('public'));
+        this.app.use(express.urlencoded({extended:true}));
+        this.app.use(expressFileUpload({
+            limits: { fileSize: 5000000 },
+            abortOnLimit: true,
+            responseOnLimit: 'Error, muy grande la foto'
+        }));
     }
 
     routers(){
-
+        this.app.use('/skaterpark',require('../routers/public.js'))
+        this.app.use('/skaterpark/skaters',require('../routers/skater.js'))
+        this.app.use('/skaterpark/auth/',require('../routers/auth.js'))
     }
 
     listen() {
