@@ -32,16 +32,73 @@
                 </div>
 
                 <div>
-                    <button class="btn-actualizar">ACTUALIZAR DATOS</button>
+                    <button class="btn-actualizar" type="button" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#modalActualizar" data-id="{{skater.id}}" data-nombre="{{skater.nombre}}"
+                        data-anos="{{skater.anos_experiencia}}" data-especialidad="{{skater.especialidad}}">
+                        ACTUALIZAR DATOS
+                    </button>
+
                     <button class="btn-eliminar">ELIMINAR CUENTA</button>
                 </div>
-                <button onclick="logout()">Cerrar sesión</button>
-                {{!-- <a href="/logout">  </a> --}}
-        </div>
+                <p class="cerrar-sesion" onclick="logout()">Cerrar sesión</p>
+
+            </div>
     </main>
 
+    <!-- Modal de Bootstrap -->
+    <div class="modal fade" id="modalActualizar" tabindex="-1" role="dialog" aria-labelledby="modalActualizarLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalActualizarLabel">Actualizar Datos</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="formActualizar">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="anos_experiencia">Años de experiencia</label>
+                            <input type="number" id="anos_experiencia" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="especialidad">Especialidad</label>
+                            <select id="especialidad" class="form-control" required>
+                                <option value="" selected>Selecciona tu estilo</option>
+                                <option value="freestyle">Freestyle</option>
+                                <option value="street">Street</option>
+                                <option value="vert">Vert</option>
+                                <option value="park">Park</option>
+                                <option value="bowl">Bowl</option>
+                                <option value="downhill">Downhill</option>
+                                <option value="cruising">Cruising</option>
+                                <option value="longboard">Longboard</option>
+                                <option value="slalom">Slalom</option>
+                                <option value="freeride">Freeride</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="submit" class="btn btn-actualizar m-3">Guardar cambios</button>
+                        <button type="button" class="btn btn-eliminar m-3" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
     {{>footer}}
+
     {{>script}}
+    <script src="/assets/js/modalSkater.js"></script>
+
 </body>
 
 </html>

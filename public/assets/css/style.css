@@ -27,13 +27,14 @@ ul li {
   margin: 0;
 }
 
-a {
+a, .cerrar-sesion {
   text-decoration: none;
+  cursor: pointer;
   color: #db8d2b;
   text-transform: uppercase;
   font-weight: bold;
 }
-a:hover {
+a:hover, .cerrar-sesion:hover {
   color: #1a6988;
 }
 
@@ -249,17 +250,21 @@ header button a {
   border-radius: 5px;
   padding: 0.5rem;
 }
-.skater .datos-skater .btn-eliminar {
-  background-color: #c84f38;
+
+.btn-eliminar {
+  background-color: #c84f38 !important;
 }
-.skater .datos-skater .btn-eliminar:hover {
-  background-color: #b54732;
+.btn-eliminar:hover {
+  background-color: #b54732 !important;
+  color: aliceblue !important;
 }
-.skater .datos-skater .btn-actualizar {
-  background-color: #1a6988;
+
+.btn-actualizar {
+  background-color: #1a6988 !important;
 }
-.skater .datos-skater .btn-actualizar:hover {
-  background-color: #165873;
+.btn-actualizar:hover {
+  background-color: #165873 !important;
+  color: aliceblue !important;
 }
 
 /* tarjetas */

@@ -113,6 +113,24 @@ const updateEstadoController = async (req, res) => {
     }
 };
 
+const updateSkaterController = async (req, res) => {
+    const { id, nombre,anos_experiencia,especialidad } = req.body; 
+
+    try {
+        // Los null no serán actualizados :D
+        const respuesta = await updateSkater(id, null, nombre, null, anos_experiencia, especialidad, null, null);
+
+        if (respuesta.status === 200) {
+            res.status(200).json({ msg: respuesta.msg });
+        } else {
+            res.status(respuesta.status).json({ msg: respuesta.msg });
+        }
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ msg: 'Error al actualizar el estado' });
+    }
+};
 
 
-module.exports = { createSkaterController,SkaterProfileController,findAllSkatersController,deleteSkaterController,updateEstadoController};
+
+module.exports = { createSkaterController,SkaterProfileController,findAllSkatersController,deleteSkaterController,updateEstadoController ,updateSkaterController};
