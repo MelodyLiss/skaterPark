@@ -6,27 +6,30 @@ const findAllSkaters = async () => {
     try {
         const skaters = await Skater.findAll();
 
-        if(skaters.length==0){
+        if (skaters.length === 0) {
             return {
-                msg: 'no hay skaters registrados',
+                msg: 'No hay skaters registrados',
                 status: 204,
-                datos: []
-            }
-        }return{
-            msg:'Listado de skaters registrados',
-            status:200,
-            datos: skaters.map(skater =>skater.toJSON())
+                datos: []  
+            };
         }
 
+        return {
+            msg: 'Listado de skaters registrados',
+            status: 200,
+            datos: skaters.map(skater => skater.toJSON()) 
+        };
+
     } catch (error) {
-        console.log(error.message);
+        console.log('Error en findAllSkaters:', error.message);
         return {
             msg: 'Error en el servidor',
             status: 500,
-            datos: []
+            datos: []  
+        };
     }
-}
 };
+
 
 const findByAttributeSkaters = async (clave, valor) => {
     try {
@@ -122,7 +125,7 @@ const updateSkater = async (id, email, nombre, password, anos_experiencia, espec
         if (foto) {
             skater.foto = foto;
         }
-        if (estado !== undefined) { // Asegúrate de que 'estado' sea un valor booleano
+        if (estado !== undefined) { 
             skater.estado = estado;
         }
 
@@ -174,26 +177,36 @@ const createSkater = async (email,nombre,password,anos_experiencia,especialidad,
 };
 
 const deleteSkater = async (id) => {
-
     try {
-        const skater = Skater.destroy({where:{id}});
-        const skaters = await Skater.findAll();
-        return {
-            msg: `El/la skater asociado al id ${id} ha sido eliminado correctamente.`,
-            status: 200,
-            datos: skaters.map(skater =>skater.toJSON())
-        };
+        // Verifica que el skater existe
+        const skater = await Skater.findByPk(id);
+        if (!skater) {
+            return {
+                msg: `El skater con ID ${id} no existe.`,
+                status: 404,
+                datos: []
+            };
+        }
 
-    } catch (error) {
-        console.log(error.message);
+        await Skater.destroy({ where: { id } });
+
+        const skaters = await Skater.findAll();
+
         return {
-            msg: 'Error en el servidor',
+            msg: `El skater con ID ${id} ha sido eliminado correctamente.`,
+            status: 200,
+            datos: skaters.map(skater => skater.toJSON())
+        };
+    } catch (error) {
+        console.error(error.message);
+        return {
+            msg: 'Error en el servidor al intentar eliminar el skater.',
             status: 500,
             datos: []
-        }
+        };
     }
-    
-}
+};
+
 
 
 module.exports ={

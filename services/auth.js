@@ -1,24 +1,39 @@
-// service/authService.js
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { findByAttributeSkaters } = require('./skater');
+const Skater = require('../models/skater');
+const Usuario = require('../models/usuario');
+
+// Función que busca un usuario por correo (Usuario o Skater)
+const findUserByEmail = async (email) => {
+    let user = await Usuario.findOne({ where: { email } });
+
+    if (!user) {
+        user = await Skater.findOne({ where: { email } });
+    }
+    return user;
+};
+
 
 const login = async (email, password) => {
     try {
-        const result = await findByAttributeSkaters('email', email);
-        if (result.status === 204) {
+        const user = await findUserByEmail(email);
+
+        if (!user) {
             throw new Error('Credenciales inválidas.');
         }
 
-        const skater = result.datos[0];
-        // Verificar la contraseña
-        const isMatch = await bcrypt.compare(password, skater.password);
+        const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             throw new Error('Credenciales inválidas.');
         }
 
         const token = jwt.sign(
-            { id: skater.id, email: skater.email, nombre: skater.nombre ,rol: skater.rol },
+            { 
+                id: user.id, 
+                email: user.email, 
+                nombre: user.nombre,
+                rol: user.rolId
+            },
             process.env.JWT_SECRET,
             { expiresIn: process.env.JWT_EXPIRATION }
         );
@@ -30,5 +45,4 @@ const login = async (email, password) => {
     }
 };
 
-
-module.exports = { login };
+module.exports = { login, findUserByEmail };

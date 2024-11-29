@@ -6,22 +6,30 @@
     {{>navbar}}
 
     <main>
-        <h1>Conoce los participantes</h1>
+        <h1>Conoce a los participantes</h1>
 
 
         <div class="container row w-100 mx-auto g-0 participantes">
 
+
+            {{#if skaters.length}}
+
+            {{#each skaters}}
             <div class="card col-4 m-4" style="width: 30rem;">
-                <img src="/assets/img/skater_1.jpg" class="card-img-top" alt="foto participante">
+                <img src="/{{this.foto}}" class="card-img-top" alt="foto participante">
                 <div class="card-body">
-                    <h5 class="card-title">juanito el bandolero</h5>
+                    <h5 class="card-title">{{this.nombre}}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Años de experiencia: <span>3</span></li>
-                    <li class="list-group-item">Especialidad: <span>Freestyle</span></li>
-                    
+                    <li class="list-group-item">Años de experiencia: <span>{{this.anos_experiencia}}</span></li>
+                    <li class="list-group-item">Especialidad: <span>{{this.especialidad}}</span></li>
                 </ul>
             </div>
+            {{/each}}
+
+            {{else}}
+            <p>No hay skaters registrados.</p>
+            {{/if}}
 
         </div>
 

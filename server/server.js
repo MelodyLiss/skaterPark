@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const path = require('path');
 const expressFileUpload = require('express-fileupload');
+const cookieParser = require('cookie-parser');
 require('dotenv').config()
 
 class Server {
@@ -18,6 +19,7 @@ class Server {
         hbs.registerPartials(path.join(__dirname,'../views/partials'));
         this.app.use(express.static('public'));
         this.app.use(express.urlencoded({extended:true}));
+        this.app.use(cookieParser());
         this.app.use(expressFileUpload({
             limits: { fileSize: 5000000 },
             abortOnLimit: true,

@@ -277,9 +277,6 @@ header button a {
   background-color: #141b1d;
   color: aliceblue;
 }
-.participantes .card:hover {
-  width: 32rem !important;
-}
 
 .navbar {
   background-color: #141b1d;

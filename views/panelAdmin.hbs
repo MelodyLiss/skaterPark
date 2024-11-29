@@ -10,38 +10,56 @@
         <div class="py-4">
             <h1>Administración</h1>
 
-            {{#if skaters.length}}
+            {{#if msg}}
+            <div class="alert alert-info text-center" role="alert">
+                {{msg}}
+            </div>
+            {{/if}}
+
+            {{#if skaters}}
             <table class="table w-50 m-auto">
                 <thead>
-                    <tr >
+                    <tr>
                         <th scope="col">#</th>
                         <th scope="col">Foto</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Años de experiencia</th>
                         <th scope="col">Especialidad</th>
                         <th scope="col">Estado</th>
+                        <th></th>
                     </tr>
                 </thead>
-                
                 <tbody>
                     {{#each skaters}}
                     <tr>
                         <th scope="row">{{this.id}}</th>
                         <td>
-                            <div>{{this.foto}}</div> {{!-- arreglar despues --}}
+                            {{#if this.foto}}
+                            <img src="/{{this.foto}}" alt="Foto de {{this.nombre}}"
+                                style="max-width: 100px; height: auto;">
+                            {{else}}
+                            <span>No disponible</span>
+                            {{/if}}
                         </td>
                         <td>{{this.nombre}}</td>
                         <td class="text-center">{{this.anos_experiencia}}</td>
                         <td>{{this.especialidad}}</td>
-                        <td><input type="checkbox" {{#if estado}}checked{{/if}} data-id="{{id}}" /></td>
+                        <td class="text-center">
+                            <input type="checkbox" {{#if this.estado}}checked{{/if}} data-id="{{this.id}}" />
+                        </td>
+                        <td>
+                            <a href="/skaterpark/auth/delete?id={{this.id}}" class="btn btn-danger">Eliminar</a>
+                        </td>
                     </tr>
                     {{/each}}
                 </tbody>
-                
             </table>
+            {{else}}
+            <p>No hay skaters disponibles.</p>
             {{/if}}
         </div>
     </main>
+
 
     {{>footer}}
     {{>script}}

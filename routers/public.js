@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const router = Router();
+const {findAllSkatersController }= require('../controllers/skater')
 
 router.get('/login', (req, res) => {
     res.render('login');
@@ -24,4 +25,6 @@ router.get('/contacto', (req, res) => {
 router.get('/register', (req, res) => {
     res.render('panelRegister');
 });
+
+router.get('/participantes',findAllSkatersController )
 module.exports = router;
