@@ -38,7 +38,7 @@
                         ACTUALIZAR DATOS
                     </button>
 
-                    <button class="btn-eliminar">ELIMINAR CUENTA</button>
+                    {{!-- <button class="btn-eliminar">ELIMINAR CUENTA</button> Considerar hacer un borrado lógico para asi dejar al participante darse de baja --}}
                 </div>
                 <p class="cerrar-sesion" onclick="logout()">Cerrar sesión</p>
 
@@ -54,18 +54,22 @@
                     <h5 class="modal-title" id="modalActualizarLabel">Actualizar Datos</h5>
                 </div>
                 <div class="modal-body">
-                    <form id="formActualizar">
+                    <form id="formActualizar" action="/skaterpark/skaters/actualizarSkater" method="post">
+
+                        <input type="hidden" id="id" name="id">
+
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" id="nombre" class="form-control" required>
+                            <input type="text" name="nombre" id="nombre" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="anos_experiencia">Años de experiencia</label>
-                            <input type="number" id="anos_experiencia" class="form-control" required>
+                            <input type="number" name="anos_experiencia" id="anos_experiencia" class="form-control"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="especialidad">Especialidad</label>
-                            <select id="especialidad" class="form-control" required>
+                            <select name="especialidad" id="especialidad" class="form-control" required>
                                 <option value="" selected>Selecciona tu estilo</option>
                                 <option value="freestyle">Freestyle</option>
                                 <option value="street">Street</option>
@@ -79,16 +83,36 @@
                                 <option value="freeride">Freeride</option>
                             </select>
                         </div>
+
+                        <div>
+                            <div class="mb-3 position-relative">
+                            <label for="inputPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Dejar vacío si no desea cambiarla">
+                            <i class="fas fa-eye position-absolute" id="togglePassword"
+                                style="top: 78%; right: 10px; transform: translateY(-30%); cursor: pointer;"></i>
+                        </div>
+
+                        <!-- Repetir Contraseña -->
+                        <div class="mb-3 position-relative">
+                            <label for="inputConfirmPassword" class="form-label">Repetir Contraseña</label>
+                            <input type="password" class="form-control" id="inputConfirmPassword" name="confirmPassword"
+                                placeholder="Dejar vacío si no desea cambiarla">
+                            <i class="fas fa-eye position-absolute" id="toggleConfirmPassword"
+                                style="top: 78%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
+                        </div>
+                        </div>
+
+                        <div id="errorMsg" class="text-danger mb-3" style="display: none;"></div>
+
                         <div class="modal-footer">
-                        <button type="submit" class="btn btn-actualizar m-3">Guardar cambios</button>
-                        <button type="button" class="btn btn-eliminar m-3" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
+                            <button type="submit" class="btn btn-actualizar m-3">Guardar cambios</button>
+                            <button type="button" class="btn btn-eliminar m-3" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 
 
 

@@ -10,18 +10,60 @@
         <div class="py-4">
             <h1>Administración</h1>
 
+            <div class="w-75 mx-auto">
+                <form class="m-5 buscador" role="search" action="/skaterpark/auth/buscarSkaters" method="GET"
+                    onsubmit="console.log('Formulario enviado')">
+                    <div class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Busqueda" aria-label="Search"
+                            name="buscar" id="searchInput">
+                        <button class="btn btn-actualizar" type="submit">Buscar</button>
+                    </div>
+
+                    <div class="opciones">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="busqueda" id="id" value="id">
+                            <label class="form-check-label" for="id">id</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="busqueda" id="nombre" value="nombre"
+                                checked>
+                            <label class="form-check-label" for="nombre">nombre</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="busqueda" id="correo" value="correo">
+                            <label class="form-check-label" for="correo">correo</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="busqueda" id="especialidad"
+                                value="especialidad">
+                            <label class="form-check-label" for="especialidad">especialidad</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="busqueda" id="anos_experiencia"
+                                value="anos_experiencia">
+                            <label class="form-check-label" for="anos_experiencia">años de experiencia</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
             {{#if msg}}
-            <div class="alert alert-info text-center" role="alert">
+            <div class="alert {{#if skaters.length}}alert-success{{else}}alert-warning{{/if}} text-center" role="alert">
                 {{msg}}
             </div>
             {{/if}}
 
             {{#if skaters}}
-            <table class="table w-50 m-auto">
+            <table class="table w-75 m-auto">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Foto</th>
+                        <th scope="col">Correo</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Años de experiencia</th>
                         <th scope="col">Especialidad</th>
@@ -36,12 +78,14 @@
                         <td>
                             {{#if this.foto}}
                             <img src="/{{this.foto}}" alt="Foto de {{this.nombre}}"
-                                style="max-width: 100px; height: auto;">
+                                style="width: 80px; height: 80px; object-fit: cover;">
+
                             {{else}}
                             <span>No disponible</span>
                             {{/if}}
                         </td>
                         <td>{{this.nombre}}</td>
+                        <td>{{this.email}}</td>
                         <td class="text-center">{{this.anos_experiencia}}</td>
                         <td>{{this.especialidad}}</td>
                         <td class="text-center">

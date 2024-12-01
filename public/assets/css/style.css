@@ -283,6 +283,20 @@ header button a {
   color: aliceblue;
 }
 
+.buscador {
+  padding: 2rem;
+  border-radius: 15px;
+  background-color: #f1d3ae !important;
+}
+.buscador .form-control {
+  background-color: #f9ebd9 !important;
+}
+.buscador .opciones {
+  margin-top: 1rem;
+  padding: 0.2rem;
+  text-align: center;
+}
+
 .navbar {
   background-color: #141b1d;
 }

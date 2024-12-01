@@ -41,16 +41,21 @@ const validarRegistro = [
 
     // Validación para la foto (si es obligatoria)
     check('foto')
-        .optional()  // La foto puede ser opcional
         .custom((value, { req }) => {
-            if (req.files && req.files.foto) {
-                const file = req.files.foto;
-                const fileExtension = file.name.split('.').pop();
-                const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-                if (!validExtensions.includes(fileExtension)) {
-                    throw new Error('La foto debe tener una extensión válida (jpg, jpeg, png, gif)');
-                }
+            // Verificar si el archivo 'foto' está presente en 'req.files'
+            if (!req.files || !req.files.foto) {
+                throw new Error('La foto es obligatoria');
+                
             }
+            // Verificar la extensión del archivo solo si está presente
+            const file = req.files.foto;
+            const fileExtension = file.name.split('.').pop();
+            const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+
+            if (!validExtensions.includes(fileExtension)) {
+                throw new Error('La foto debe tener una extensión válida (jpg, jpeg, png, gif)');
+            }
+
             return true;
         }),
 

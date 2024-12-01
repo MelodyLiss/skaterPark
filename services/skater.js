@@ -29,62 +29,77 @@ const findAllSkaters = async () => {
         };
     }
 };
-
-
 const findByAttributeSkaters = async (clave, valor) => {
     try {
-        let condiciones = {}; 
-
-        if (clave === 'id') {
-            condiciones[clave] = parseInt(valor, 10); // Parseamos'
-        } else if (clave === 'anos_experiencia') {
-            condiciones[clave] = parseInt(valor, 10); 
-        } else {
-            //'unaccent' para que elimine acentos
-            condiciones = Sequelize.where(
-                Sequelize.fn('unaccent', Sequelize.col(`Skater.${clave}`)),
-                { [Op.iLike]: Sequelize.fn('unaccent', `%${valor}%`) }
-            );
+        let condiciones = {};
+        
+        // Validaciones y conversiones previas
+        switch(clave) {
+            case 'id':
+                const id = parseInt(valor, 10);
+                if (isNaN(id)) {
+                    return {
+                        msg: 'El ID proporcionado no es válido',
+                        status: 400,
+                        datos: []
+                    };
+                }
+                condiciones[clave] = id;
+                break;
+            
+            case 'anos_experiencia':
+                const anos = parseInt(valor, 10);
+                if (isNaN(anos)) {
+                    return {
+                        msg: 'El valor proporcionado para años de experiencia no es válido',
+                        status: 400,
+                        datos: []
+                    };
+                }
+                condiciones[clave] = anos;
+                break;
+            
+            // Búsqueda sin acentos para texto
+            default:
+                condiciones = Sequelize.where(
+                    Sequelize.fn('unaccent', Sequelize.col(`Skater.${clave}`)),
+                    { [Op.iLike]: Sequelize.fn('unaccent', `%${valor}%`) }
+                );
         }
 
-        // findByPk solo cuando se trata de buscar por ID
+        // Búsqueda por ID
         if (clave === 'id') {
-            const skater = await Skater.findByPk(valor);
-            if (!skater) {
-                return {
+            const skater = await Skater.findByPk(condiciones.id);
+            return skater 
+                ? {
+                    msg: `Búsqueda realizada por ${clave} = ${valor}`,
+                    status: 201,
+                    datos: [skater.toJSON()]
+                }
+                : {
                     msg: `Skater con ID ${valor} no encontrado`,
                     status: 204,
                     datos: []
                 };
-            }
-
-            return {
-                msg: `Búsqueda realizada por ${clave} = ${valor}`,
-                status: 201,
-                datos: [skater.toJSON()]
-            };
         }
 
-        //findAll para el resto
-        const skaters = await Skater.findAll({
-            where: condiciones
-        });
+        // Búsqueda general
+        const skaters = await Skater.findAll({ where: condiciones });
 
-        if (skaters.length === 0) {
-            return {
+        return skaters.length > 0 
+            ? {
+                msg: `Búsqueda realizada por ${clave} = ${valor}`,
+                status: 201,
+                datos: skaters.map(skater => skater.toJSON())
+            }
+            : {
                 msg: `No se encontraron resultados para ${clave} = ${valor}`,
                 status: 204,
                 datos: []
             };
-        }
 
-        return {
-            msg: `Búsqueda realizada por ${clave} = ${valor}`,
-            status: 201,
-            datos: skaters.map(skater => skater.toJSON()) 
-        };
     } catch (error) {
-        console.log(error.message);
+        console.error(error);
         return {
             msg: 'Error en el servidor',
             status: 500,
@@ -92,7 +107,6 @@ const findByAttributeSkaters = async (clave, valor) => {
         };
     }
 };
-
 
 const updateSkater = async (id, email, nombre, password, anos_experiencia, especialidad, foto, estado) => {
     try {

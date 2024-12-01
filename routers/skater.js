@@ -6,9 +6,7 @@ const validarRegistro = require('../middlewares/validator.js')
 router.post('/register', validarRegistro, createSkaterController); // Registrarse
 router.get('/:id', SkaterProfileController); //Ruta perfil Skater
 
-router.post('/actualizarEstado', updateEstadoController);
-router.post('/actualizarSkater',updateSkaterController );
-
-
+router.post('/actualizarEstado', updateEstadoController);//update estado
+router.post('/actualizarSkater',updateSkaterController ); //actualizacion para skaters
 
 module.exports = router;

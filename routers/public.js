@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const {findAllSkatersController }= require('../controllers/skater')
+const {findAllSkatersController,findByAttributesController }= require('../controllers/skater')
 
 router.get('/login', (req, res) => {
     res.render('login');
@@ -27,4 +27,5 @@ router.get('/register', (req, res) => {
 });
 
 router.get('/participantes',findAllSkatersController )
+router.get('/buscarSkaters', findByAttributesController)//filtrar participantes
 module.exports = router;
