@@ -1,6 +1,6 @@
 # 🛠 Plan de Mejoras
 
-Este archivo documenta las mejoras planificadas para el proyecto **Prueba Skater Park**.
+Este archivo es para documenta las mejoras planificadas para el proyecto **Prueba Skater Park**.
 Aún hay mucho que pulir 😊
 ---
 
