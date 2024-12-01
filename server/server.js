@@ -15,6 +15,9 @@ class Server {
 
     middlewares(){
         this.app.set('view engine','hbs');
+        hbs.registerHelper('eq', function(a, b) {
+            return a === b;
+        }); //HELPER DE COMPARACION
         this.app.use(express.json());
         hbs.registerPartials(path.join(__dirname,'../views/partials'));
         this.app.use(express.static('public'));

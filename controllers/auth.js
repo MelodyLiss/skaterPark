@@ -23,7 +23,7 @@ const loginController = async (req, res) => {
 
         if (decodedToken.rol === 1) {
             return res.redirect('/skaterpark/auth/admin');
-        } else if (decodedToken.rol === 3) {
+        } else if (decodedToken.rol === 2) {
             return res.redirect(`/skaterpark/skaters/${decodedToken.id}`);
         }
 

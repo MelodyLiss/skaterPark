@@ -27,5 +27,5 @@ router.get('/register', (req, res) => {
 });
 
 router.get('/participantes',findAllSkatersController )
-router.get('/buscarSkaters', findByAttributesController)//filtrar participantes
+router.get('/filtrarParticipantes', findByAttributesController)//filtrar participantes
 module.exports = router;

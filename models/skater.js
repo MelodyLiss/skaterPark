@@ -47,7 +47,7 @@ const Skater = sequelize.define('Skater', {
             model: 'roles',
             key: 'id'
         },
-        defaultValue: 3 //rol skater 
+        defaultValue: 2 //rol skater 
     }
 
 }, {

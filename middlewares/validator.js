@@ -45,7 +45,7 @@ const validarRegistro = [
             // Verificar si el archivo 'foto' está presente en 'req.files'
             if (!req.files || !req.files.foto) {
                 throw new Error('La foto es obligatoria');
-                
+
             }
             // Verificar la extensión del archivo solo si está presente
             const file = req.files.foto;
@@ -63,12 +63,22 @@ const validarRegistro = [
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errores: errors.array() });
+            return res.render('panelRegister', { 
+                errors: errors.array(),
+                datos: req.body // Pasa los datos del formulario para no perder lo que el usuario haya ingresado
+            });
         }
         next();
     }
+
 ];
 
 
 
 module.exports = validarRegistro;
+
+
+
+
+
+        

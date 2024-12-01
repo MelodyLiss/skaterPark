@@ -22,7 +22,7 @@
 
                 <div class="d-flex solicitud">
                     <p>Estado de solicitud:</p>
-                    <p id="estado">
+                    <p id="estado" class="{{#if skater.estado}} aprobado {{else}} pendiente {{/if}}">
                         {{#if skater.estado}}
                         Aprobado
                         {{else}}
@@ -31,6 +31,7 @@
                     </p>
                 </div>
 
+
                 <div>
                     <button class="btn-actualizar" type="button" class="btn btn-success" data-bs-toggle="modal"
                         data-bs-target="#modalActualizar" data-id="{{skater.id}}" data-nombre="{{skater.nombre}}"
@@ -38,7 +39,8 @@
                         ACTUALIZAR DATOS
                     </button>
 
-                    {{!-- <button class="btn-eliminar">ELIMINAR CUENTA</button> Considerar hacer un borrado lógico para asi dejar al participante darse de baja --}}
+                    {{!-- <button class="btn-eliminar">ELIMINAR CUENTA</button> Considerar hacer un borrado lógico para
+                    asi dejar al participante darse de baja --}}
                 </div>
                 <p class="cerrar-sesion" onclick="logout()">Cerrar sesión</p>
 
@@ -86,20 +88,21 @@
 
                         <div>
                             <div class="mb-3 position-relative">
-                            <label for="inputPassword" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Dejar vacío si no desea cambiarla">
-                            <i class="fas fa-eye position-absolute" id="togglePassword"
-                                style="top: 78%; right: 10px; transform: translateY(-30%); cursor: pointer;"></i>
-                        </div>
+                                <label for="inputPassword" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="inputPassword" name="password"
+                                    placeholder="Dejar vacío si no desea cambiarla">
+                                <i class="fas fa-eye position-absolute" id="togglePassword"
+                                    style="top: 78%; right: 10px; transform: translateY(-30%); cursor: pointer;"></i>
+                            </div>
 
-                        <!-- Repetir Contraseña -->
-                        <div class="mb-3 position-relative">
-                            <label for="inputConfirmPassword" class="form-label">Repetir Contraseña</label>
-                            <input type="password" class="form-control" id="inputConfirmPassword" name="confirmPassword"
-                                placeholder="Dejar vacío si no desea cambiarla">
-                            <i class="fas fa-eye position-absolute" id="toggleConfirmPassword"
-                                style="top: 78%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
-                        </div>
+                            <!-- Repetir Contraseña -->
+                            <div class="mb-3 position-relative">
+                                <label for="inputConfirmPassword" class="form-label">Repetir Contraseña</label>
+                                <input type="password" class="form-control" id="inputConfirmPassword"
+                                    name="confirmPassword" placeholder="Dejar vacío si no desea cambiarla">
+                                <i class="fas fa-eye position-absolute" id="toggleConfirmPassword"
+                                    style="top: 78%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
+                            </div>
                         </div>
 
                         <div id="errorMsg" class="text-danger mb-3" style="display: none;"></div>

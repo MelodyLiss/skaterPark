@@ -2,11 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 html {
   box-sizing: border-box;
-  font-family: "Poppins";
   font-family: "Poppins", sans-serif;
   letter-spacing: 0.2rem;
   font-size: 0.8rem;
-  color: #282733;
+  color: #0b0d0e;
 }
 
 body {
@@ -38,8 +37,7 @@ a:hover, .cerrar-sesion:hover {
   color: #1a6988;
 }
 
-.btn,
-button {
+.btn, button {
   border: none;
   padding: 1rem;
   margin: 0;
@@ -50,8 +48,7 @@ button {
   border-radius: 10px;
   text-transform: uppercase;
 }
-.btn:hover,
-button:hover {
+.btn:hover, button:hover {
   background-color: #db8d2b;
 }
 
@@ -178,6 +175,7 @@ header button a {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  /* Register */
 }
 .login a {
   color: #c84f38;
@@ -202,8 +200,18 @@ header button a {
   font-size: 1.5rem;
 }
 .login .form-text {
-  color: #ff0000;
+  color: #c84f38;
   font-size: 1rem;
+}
+.login .error-validacion {
+  background-color: aliceblue;
+  color: #c84f38;
+  border: 1px solid #c84f38;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+.login .error-validacion li {
+  margin-bottom: 0.5rem;
 }
 
 /* USER */
@@ -245,10 +253,15 @@ header button a {
   border: 0.1rem solid #141b1d;
 }
 .skater .datos-skater .solicitud #estado {
-  background-color: #db8d2b;
   color: aliceblue;
   border-radius: 5px;
   padding: 0.5rem;
+}
+.skater .datos-skater .solicitud #estado.pendiente {
+  background-color: #db8d2b;
+}
+.skater .datos-skater .solicitud #estado.aprobado {
+  background-color: #1a6988;
 }
 
 .btn-eliminar {
@@ -316,7 +329,8 @@ footer {
   width: 100%;
 }
 footer p {
+  margin-top: 2rem;
   text-align: center;
-  font-size: 0.6rem;
+  font-size: 1rem;
   color: aliceblue;
 }/*# sourceMappingURL=style.css.map */

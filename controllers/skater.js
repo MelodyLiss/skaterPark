@@ -2,7 +2,6 @@ const path = require('path');
 const { validationResult } = require('express-validator');
 const { createSkater, findByAttributeSkaters, findAllSkaters, deleteSkater, updateSkater, } = require('../services/skater');
 const Skater = require('../models/skater');
-const { log } = require('console');
 
 
 const createSkaterController = async (req, res) => {
@@ -161,8 +160,7 @@ const findByAttributesController = async (req, res) => {
         const filtroSeleccion = req.query.busqueda;
         const valorBusqueda = req.query.buscar;
 
-        // Determinar la vista según la URL
-        const vista = req.originalUrl.includes('/auth/admin') ? 'panelAdmin' : 'panelParticipantes';
+        const vista = req.path === '/auth/admin' ? 'panelAdmin' : 'panelParticipantes';
 
         let respuesta;
 
@@ -180,7 +178,6 @@ const findByAttributesController = async (req, res) => {
 
     } catch (error) {
         console.error('Error en el controlador de búsqueda:', error);
-        const vista = req.originalUrl.includes('/auth/admin') ? 'panelAdmin' : 'panelParticipantes';
         res.render(vista, {
             msg: 'Error en el servidor',
             status: 500,
@@ -188,5 +185,9 @@ const findByAttributesController = async (req, res) => {
         });
     }
 };
+
+
+
+
 
 module.exports = { createSkaterController, SkaterProfileController, findAllSkatersController, deleteSkaterController, updateEstadoController, updateSkaterController, findByAttributesController };
